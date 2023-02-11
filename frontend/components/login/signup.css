@@ -5,7 +5,11 @@
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
-  background: wheat;
+  background: white;
+  /* margin-left: 20px; */
+  
+  
+  
 }
 
 h1{ text-align: center;}
