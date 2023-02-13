@@ -1,0 +1,148 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.main{
+	display: grid;
+}
+
+.main {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: repeat(1, 1fr);
+	grid-template-areas: 'sidebar contentDiv contentDiv contentDiv contentDiv contentDiv';
+}
+
+.sidebar {
+	grid-area: sidebar;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	height: 100vh;
+	background-color: rgb(39, 35, 67);
+	color: white;
+	padding: 3em;
+	width: 15em;
+}
+
+.contentDiv {
+	grid-area: contentDiv;
+	background-color: rgb(243, 228, 228);
+}
+
+.sidebar-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+.stat-nav-icon{
+	padding-right: 10px;
+}
+
+.headerDiv {
+	background-color: white;
+	height: 4em;
+	display: flex;
+	justify-content: space-between;
+}
+
+.salutation {
+	padding: 20px;
+}
+
+.search-profile {
+	display: flex;
+	justify-content: center;
+
+	gap: 5em;
+	padding-right: 1em;
+}
+
+.profile-pic img {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	margin-top: 8px;
+}
+
+.searchBar input {
+	padding: 5px;
+	border-radius: 15px;
+	border: 2px solid grey;
+	margin-top: 15px;
+}
+
+.stats-cards {
+	margin-top: 2em;
+	display: flex;
+	justify-content: space-around;
+	gap: 10px;
+	padding: 10px;
+}
+
+.stats-card {
+	background-color: white;
+	border: 1px solid white;
+	width: 50%;
+	padding: 2em;
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.stats-icon {
+	font-size: 5rem;
+	color: blueviolet;
+}
+
+.stats-icon2 {
+	position: absolute;
+	font-size: x-large;
+	color: grey;
+	z-index: 1;
+	margin-top: 1.2em;
+	margin-left: -7px;
+	transform: rotate(45deg);
+}
+
+.stats-table {
+	padding: 1%;
+    text-align: center;
+}
+
+.stats-table .title {
+display: flex;
+justify-content:space-between;
+background-color: rgb(190, 177, 177);
+padding: 0.8rem;
+
+}
+
+.stats-table-width {
+  width: 20%;
+ }
+
+ .stats-table-data {
+    display: flex;
+    justify-content:space-between;
+    background-color: white;
+    margin-top: 5px;
+    padding: 0.8rem;
+   
+    }
+
+
+    .stats-table-nav {
+        display: flex;
+        justify-content:space-evenly;
+        background-color: white;
+        margin-top: 5px;
+        gap: 280px;
+        text-align: center;
+        padding-left: 80px;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+    }
+       
