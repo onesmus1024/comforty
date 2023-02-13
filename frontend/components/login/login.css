@@ -10,13 +10,16 @@ form {
   }
   
  
-  input[type=email], input[type=password], input[type=text]{
+  input[type=email], input[type=password], input[type=number]{
     width: 100%;
    
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc; padding: 12px 20px;
     box-sizing: border-box;
+  }
+  h3{
+    text-align: center;
   }
   
   
