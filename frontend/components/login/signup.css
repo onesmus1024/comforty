@@ -1,5 +1,5 @@
 * {box-sizing: border-box}
-  input[type=email], input[type=password] {
+  input[type=email], input[type=password], input[type=number] {
   width: 95%;
   padding: 15px;
   margin: 5px 0 22px 0;
