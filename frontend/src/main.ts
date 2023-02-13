@@ -9,10 +9,13 @@ let cartIcon = document.getElementById("cart-icon")! as HTMLDivElement;
 let numberOfItems = document.getElementById("number-of-items")! as HTMLDivElement;
 let addToCartBtn = document.getElementById("add-to-cart")! as HTMLButtonElement
 let utils = document.querySelector(".utils")! as HTMLDivElement;
-let productContainer = document.querySelector(".product")! as HTMLDivElement;
+
 let featuredProductsContainer = document.querySelector("#featured-product")! as HTMLDivElement;
+let topCategoriesContainer = document.querySelector("#top-categories")! as HTMLDivElement;
+let ourProductsContainer = document.querySelector("#our-products")! as HTMLDivElement;
+let recentlyAddedContainer = document.querySelector("#recently-added")! as HTMLDivElement;
 
-
+let products = [];
 
 
 
@@ -27,7 +30,8 @@ window.addEventListener("scroll", () => {
     if (window.pageYOffset > 0) {
         utils.style.position = "fixed";
         utils.style.top = "0";
-        utils.style.width = "95%";
+        utils.style.width = "99%";
+   
         utils.style.zIndex = "100";
     }
     else {
@@ -113,12 +117,7 @@ cartIcon.addEventListener("click", () => {
 }
 );
 
-productContainer.addEventListener("click", (e) => {
-    e.stopPropagation();
-    window.location.href = "./src/components/singleproduct/product.html";
 
-}
-);
 
 
 
@@ -141,6 +140,7 @@ const getProducts = async () => {
     return res;
 };
 
+
 const addToCart = (e: any, product_id:any) => {
     e.stopPropagation();
     // cart.addItem(product);
@@ -151,10 +151,11 @@ const addToCart = (e: any, product_id:any) => {
 
 getProducts().then(data => {
     data.forEach((product: any) => {
+       if(product.is_deleted === false) {
         let productCard = document.createElement("div");
         productCard.classList.add("product");
         productCard.innerHTML = `
-        <img src="./asset/Image-13.png" alt="product">
+        <img src="${product.product_image_url}" alt="product">
         <div class="product-text">
         <div class="product-attribute">
         <h3>${product.name}</h3>
@@ -165,10 +166,83 @@ getProducts().then(data => {
 
         `;
         featuredProductsContainer.appendChild(productCard);
+       }
     }
     );
 }
 );
+
+
+getProducts().then(data => {
+    data.forEach((product: any) => {
+        if(product.is_deleted === false && product.recently_added === true) {
+            let productCard = document.createElement("div");
+            productCard.classList.add("product");
+            productCard.innerHTML = `
+            <img src="${product.product_image_url}" alt="product">
+                <div class="categories">
+                    <h3>${product.name}</h3>
+                    <p><span id="number">3000</span> Products</p>
+                </div>
+    
+            `;
+            topCategoriesContainer.appendChild(productCard);
+           }
+    }
+    );
+}
+);
+
+
+
+
+getProducts().then(data => {
+    data.forEach((product: any) => {
+        if(product.is_deleted === false) {
+            let productCard = document.createElement("div");
+            productCard.classList.add("product");
+            productCard.innerHTML = `
+            <img src="${product.product_image_url}" alt="product">
+            <div class="product-text">
+            <div class="product-attribute">
+            <h3>${product.name}</h3>
+            <p>$ ${product.price}</p>
+            </div>
+            <button class="add-to-cart" id=${product.id}>Add to cart</button>
+            </div>
+    
+            `;
+            ourProductsContainer.appendChild(productCard);
+           }
+    }
+    );
+}
+);
+
+getProducts().then(data => {
+    data.forEach((product: any) => {
+        if(product.is_deleted === false) {
+            let productCard = document.createElement("div");
+            productCard.classList.add("product");
+            productCard.innerHTML = `
+            <img src="${product.product_image_url}" alt="product">
+            <div class="product-text">
+            <div class="product-attribute">
+            <h3>${product.name}</h3>
+            <p>$ ${product.price}</p>
+            </div>
+            <button class="add-to-cart" id=${product.id}>Add to cart</button>
+            </div>
+    
+            `;
+            recentlyAddedContainer.appendChild(productCard);
+           }
+    }
+    );
+}
+);
+
+
 
 
 
@@ -181,6 +255,39 @@ featuredProductsContainer.addEventListener("click", (e) => {
     if (target.className == "add-to-cart") {
         cart.addItem(target.id);
       
+        updateCartNumber();
+        // cart.removeItem('e5fd457a-5c3a-40c6-8ea0-2ab2ac58e17f');
+    }
+}
+);
+
+topCategoriesContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+    let target = e.target as HTMLButtonElement;
+    if (target.className == "add-to-cart") {
+        cart.addItem(target.id);
+        updateCartNumber();
+        // cart.removeItem('e5fd457a-5c3a-40c6-8ea0-2ab2ac58e17f');
+    }
+}
+);
+
+ourProductsContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+    let target = e.target as HTMLButtonElement;
+    if (target.className == "add-to-cart") {
+        cart.addItem(target.id);
+        updateCartNumber();
+        // cart.removeItem('e5fd457a-5c3a-40c6-8ea0-2ab2ac58e17f');
+    }
+}
+);
+
+recentlyAddedContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+    let target = e.target as HTMLButtonElement;
+    if (target.className == "add-to-cart") {
+        cart.addItem(target.id);
         updateCartNumber();
         // cart.removeItem('e5fd457a-5c3a-40c6-8ea0-2ab2ac58e17f');
     }
