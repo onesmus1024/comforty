@@ -15,10 +15,8 @@ let topCategoriesContainer = document.querySelector("#top-categories")! as HTMLD
 let ourProductsContainer = document.querySelector("#our-products")! as HTMLDivElement;
 let recentlyAddedContainer = document.querySelector("#recently-added")! as HTMLDivElement;
 
-let products = [];
 
-
-
+cart.getItemsFromDB();
 interface CarouselItem {
     text: string;
     image: string;
@@ -48,12 +46,12 @@ window.addEventListener("scroll", () => {
 
 
 
-// if (numberOfItems.innerHTML === "") {
-//     numberOfItems.style.display = "none";
-// }
-// else {
-//     numberOfItems.style.display = "block";
-// }
+if (cart.getItems().length === 0) {
+    numberOfItems.style.display = "none";
+}
+else {
+    numberOfItems.style.display = "block";
+}
 
 let carouselItems: CarouselItem[] = [
     {
@@ -121,10 +119,18 @@ cartIcon.addEventListener("click", () => {
 
 
 
-const updateCartNumber =() => {
+const updateCartNumber =async () => {
     numberOfItems.style.display = "block";
-    numberOfItems.innerHTML = cart.getItems().length.toString();
+    
     console.log(cart.getItems());
+
+    if (cart.getItems().length === 0) {
+        numberOfItems.style.display = "none";
+    }
+    else {
+        numberOfItems.style.display = "block";
+        numberOfItems.innerHTML = await cart.getItems().length.toString();
+    }
 }
 
 

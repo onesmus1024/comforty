@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./signup.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./signup.css">
 </head>
+
 <body>
-    <form action="">
-        <div class="signup_container">
-          
-          <h1>Sign Up  <img src="./images/user.png" class="user" width="25px"></h1>
+  <form >
+    <div class="signup_container form-group">
 
-          <p>Please fill in this form to create an account.</p>
-          <hr>
-      
-          <label for="email"><b>Email</b></label>
-          <input type="email" placeholder="Enter Email" name="email" required>
+      <h1>Sign Up <img src="./images/user.png" class="user" width="25px"></h1>
 
-          <label for="number"><b>Phone number</b></label>
-          <input type="number" placeholder="Phone your Phone number" name="number" required>
-      
-          <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
-      
-          <label for="password_repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="password_repeat" required>
-      
-          <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-          </label>
-      
-          <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-      
+      <p>Please fill in this form to create an account.</p>
+      <hr>
 
-            <div class="submit_file">
-           <button type="submit" class="signu_pbtn">Sign Up</button>
-            <button type="submit" class="backto_login>"> <a href="./login.html">Go back to login</a></button>
-          </div>
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email"  id="email">
 
-        
-          </div>
-    
-      </form>
+      <label for="number"><b>Phone number</b></label>
+      <input type="number" placeholder="Phone your Phone number" name="number"  id="phone">
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password"  id="password1">
+
+      <label for="password_repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="password_repeat" id="password2" >
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+
+      <div class="submit_file">
+        <button type="submit" class="signu_pbtn" id="signup-btn">Sign Up</button>
+        <button type="submit" class="backto_login>"> <a href="./login.html">Go back to login</a></button>
+      </div>
+
+
+    </div>
+
+  </form>
+
+  <script src="../../../dist/components/login/signup.js"></script>
 </body>
+
 </html>

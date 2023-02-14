@@ -1,5 +1,6 @@
 
 let loginBtn = document.getElementById("login-btn")! as HTMLButtonElement;
+let formGroup = document.querySelector(".form-group")! as HTMLDivElement;
 
 
 loginBtn.addEventListener("click", async (e) => {
@@ -8,7 +9,15 @@ loginBtn.addEventListener("click", async (e) => {
     let password = document.getElementById("password")! as HTMLInputElement;
     
    if (email.value === "" || password.value === "") {
-        alert("Please enter a valid email and password");
+
+        let error = document.createElement("p");
+        error.innerHTML = "Please fill all fields";
+        error.style.color = "red";
+        error.style.fontSize = "12px";
+        formGroup.appendChild(error);
+        setTimeout(() => {
+            error.remove();
+        }, 3000);
     }else{
         let authData = await login(email.value, password.value);
         if (authData) {
@@ -43,11 +52,26 @@ const login = async (email: string, password: string) => {
     });
     
     if (response.status === 401) {
-        alert("Invalid Credentials");
+        let error = document.createElement("p");
+        error.innerHTML = "Invalid email or password";
+        error.style.color = "red";
+        error.style.fontSize = "12px";
+        formGroup.appendChild(error);
+        setTimeout(() => {
+            error.remove();
+        }, 3000);
     } else if (response.status === 200) {
         return await response.json();
     } else {
-        alert("Something went wrong");
+        
+        let error = document.createElement("p");
+        error.innerHTML = "An error occured";
+        error.style.color = "red";
+        error.style.fontSize = "12px";
+        formGroup.appendChild(error);
+        setTimeout(() => {
+            error.remove();
+        }, 3000);
     }
     }
 
