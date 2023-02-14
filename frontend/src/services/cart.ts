@@ -17,7 +17,7 @@ interface CartItem {
 class Cart {
     private items: CartItem[] = [];
     constructor() {
-        fetch('http://localhost:3002/api/cartitems/3711d8fc-0fed-49c4-a019-f03c862ecf92',{
+        fetch('https://ridespark.ml/api/cartitems/3711d8fc-0fed-49c4-a019-f03c862ecf92',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ class Cart {
 
     getItemsFromDB() {
 
-        fetch('http://localhost:3002/api/cartitems/3711d8fc-0fed-49c4-a019-f03c862ecf92',{
+        fetch('https://ridespark.ml/api/cartitems/3711d8fc-0fed-49c4-a019-f03c862ecf92',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ class Cart {
 
     }
     createItem(product_id: string) {
-        fetch('http://localhost:3002/api/cartitems',{
+        fetch('https://ridespark.ml/api/cartitems',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ class Cart {
 
 
     addItem(product_id: string) {
-        fetch(' http://localhost:3002/api/cartitems',{
+        fetch(' https://ridespark.ml/api/cartitems',{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ class Cart {
 
     }
     removeItem(cartItem_id: string) {
-        fetch('http://localhost:3002/api/cartitems/' + cartItem_id,{
+        fetch('https://ridespark.ml/api/cartitems/' + cartItem_id,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
