@@ -31,7 +31,7 @@ loginBtn.addEventListener("click", async (e) => {
 
 
 const login = async (email: string, password: string) => {
-    let response = await fetch("http://localhost:3002/api/users/login", {
+    let response = await fetch("https://ridespark.ml/api/users/login", {
         method: "POST",
         body: JSON.stringify({
             email,

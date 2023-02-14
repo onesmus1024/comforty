@@ -131,7 +131,7 @@ const updateCartNumber =() => {
 
 
 const getProducts = async () => {
-    let res = await fetch("http://localhost:3002/api/products")
+    let res = await fetch("https://ridespark.ml/api/products")
         .then(res => res.json()).then
         (data => {
             return data;
