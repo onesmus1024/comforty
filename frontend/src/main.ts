@@ -253,7 +253,7 @@ featuredProductsContainer.addEventListener("click", (e) => {
     e.stopPropagation();
     let target = e.target as HTMLButtonElement;
     if (target.className == "add-to-cart") {
-        cart.addItem(target.id);
+        cart.createItem(target.id);
       
         updateCartNumber();
         // cart.removeItem('e5fd457a-5c3a-40c6-8ea0-2ab2ac58e17f');
@@ -265,7 +265,7 @@ topCategoriesContainer.addEventListener("click", (e) => {
     e.stopPropagation();
     let target = e.target as HTMLButtonElement;
     if (target.className == "add-to-cart") {
-        cart.addItem(target.id);
+        cart.createItem(target.id);
         updateCartNumber();
         // cart.removeItem('e5fd457a-5c3a-40c6-8ea0-2ab2ac58e17f');
     }
@@ -276,7 +276,7 @@ ourProductsContainer.addEventListener("click", (e) => {
     e.stopPropagation();
     let target = e.target as HTMLButtonElement;
     if (target.className == "add-to-cart") {
-        cart.addItem(target.id);
+        cart.createItem(target.id);
         updateCartNumber();
         // cart.removeItem('e5fd457a-5c3a-40c6-8ea0-2ab2ac58e17f');
     }
@@ -287,7 +287,7 @@ recentlyAddedContainer.addEventListener("click", (e) => {
     e.stopPropagation();
     let target = e.target as HTMLButtonElement;
     if (target.className == "add-to-cart") {
-        cart.addItem(target.id);
+        cart.createItem(target.id);
         updateCartNumber();
         // cart.removeItem('e5fd457a-5c3a-40c6-8ea0-2ab2ac58e17f');
     }
