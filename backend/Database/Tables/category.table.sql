@@ -11,3 +11,4 @@ CREATE TABLE Categories (
     UNIQUE (name)
 );
 
+CREATE DATABASE comfortyEcommerce

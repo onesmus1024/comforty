@@ -14,14 +14,14 @@
         </div>
         <h3>ENTER YOUR DETAILS TO LOGIN</h3>
       
-        <div class="container">
+        <div class="container form-group">
           <label for="email"><b>Email</b></label>
-          <input type="email" placeholder="Enter your email" name="uname" required>
+          <input type="email" placeholder="Enter your email" name="uname" required id="email">
       
           <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
+          <input type="password" placeholder="Enter Password" name="password" required id="password">
       
-          <button type="submit">Login</button>
+          <button type="submit" id="login-btn">Login</button>
           <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
           </label>
@@ -32,6 +32,6 @@
           <span class="password">Forgot <a href="#">password?</a></span>
         </div>
       </form>
-      
+<script src="./../../../dist/components/login/login.js" defer ></script> 
 </body>
 </html>
