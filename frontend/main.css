@@ -20,7 +20,7 @@ header .help p{
     justify-content: space-between;
     align-items: center;
     background-color: #f0f1f3;
-    padding: 0 20px;
+    width: 100%;
 }
 .actions{
     display: flex;
@@ -75,6 +75,7 @@ nav{
     align-items: center;
     background-color: white;
     padding: 0 20px;
+    
    
 }
 nav .menu{
@@ -295,7 +296,7 @@ button:hover{
     width: 100%;
     margin: 0 auto;
 }
-.featured-product .products .product,.top-categories .products .product{
+.featured-product .products .product,.top-categories .products .product,.our-products .products .product{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -307,7 +308,7 @@ button:hover{
 
     border-radius: 5px;
 }
-.featured-product .products .product img,.top-categories .products .product img{
+.featured-product .products .product img,.top-categories .products .product img,.our-products .products .product img{
     width: 100%;
     height: 100%;
 }
@@ -383,6 +384,19 @@ button:hover{
     flex-wrap: wrap;
     width: 80%;
     margin: 0 auto;
+}
+
+.our-products .products .product{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+
+    border-radius: 5px;
 }
 
 .testimonials{

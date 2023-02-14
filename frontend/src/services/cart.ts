@@ -5,7 +5,7 @@
 // add method to get all items in cart
 // add method to get total price of cart
 // consider id of item, quantity, price, name, image
-const token ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3MTFkOGZjLTBmZWQtNDljNC1hMDE5LWYwM2M4NjJlY2Y5MiIsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkYnpRUkdpMy91cXouWVpzM0dsaDJZdU52SVM1MnRQOEw1VGVHL0ppS211eC5UOG0yRkgzVVciLCJjcmVhdGVkX2F0IjoiMjAyMy0wMi0xMlQwMDowMDowMC4wMDBaIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19kZWxldGVkIjp0cnVlLCJwaG9uZSI6IjA3MTAzODM1NTEiLCJpc19zZW50IjpmYWxzZSwiaWF0IjoxNjc2MjM3NDM4LCJleHAiOjE2NzYzMjM4Mzh9.mcuZyckd-8Sz-Fw206kHx_9k_ahEGoKrFsz0JQiilrI'
+const token ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3MTFkOGZjLTBmZWQtNDljNC1hMDE5LWYwM2M4NjJlY2Y5MiIsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkYnpRUkdpMy91cXouWVpzM0dsaDJZdU52SVM1MnRQOEw1VGVHL0ppS211eC5UOG0yRkgzVVciLCJjcmVhdGVkX2F0IjoiMjAyMy0wMi0xMlQwMDowMDowMC4wMDBaIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19kZWxldGVkIjp0cnVlLCJwaG9uZSI6IjA3MTAzODM1NTEiLCJpc19zZW50IjpmYWxzZSwiaWF0IjoxNjc2MzA3NzEyLCJleHAiOjE2NzYzOTQxMTJ9.SHcDmT0Gesz6-N0T8mZhwqoomQrDb86Yg_A_mtnpkdA'
 interface CartItem {
     id: string;
     quantity: number;
@@ -17,7 +17,7 @@ interface CartItem {
 class Cart {
     private items: CartItem[] = [];
     constructor() {
-        fetch('http://localhost:3002/api/cartitems/8fe3f01c-5d55-41ca-93ef-a84dcf27c2f8',{
+        fetch('http://localhost:3002/api/cartitems/3711d8fc-0fed-49c4-a019-f03c862ecf92',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ class Cart {
 
     getItemsFromDB() {
 
-        fetch('http://localhost:3002/api/cartitems/8fe3f01c-5d55-41ca-93ef-a84dcf27c2f8',{
+        fetch('http://localhost:3002/api/cartitems/3711d8fc-0fed-49c4-a019-f03c862ecf92',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,12 +51,8 @@ class Cart {
 
 
     }
-
-    addItem(product_id: string) {
-
-
-
-        fetch(' http://localhost:3002/api/cartitems',{
+    createItem(product_id: string) {
+        fetch('http://localhost:3002/api/cartitems',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,8 +60,39 @@ class Cart {
             },
             body: JSON.stringify({
                 "product_id": product_id,
-                "quantity": "1"
+                "quantity": 1
+                }
+            )
+
+        }).then(res => res.json())
+        .then(data => {
+            this.getItemsFromDB();
+            this.items =this.items.map(item => item.id == data.id ? data : item);
+            if (!this.items.find(item => item.id === data.id)) {
+                this.items.push(data);
             }
+        
+            console.log(this.items)
+
+        }
+        )
+
+    }
+
+
+    addItem(product_id: string) {
+        fetch(' http://localhost:3002/api/cartitems',{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                "id": "ba11b26b-a535-42ac-b610-827b5529bbf4",
+                "user_id": "3711d8fc-0fed-49c4-a019-f03c862ecf92",
+                "product_id": product_id,
+                "quantity": 1
+              }
             )
 
         }).then(res => res.json())
@@ -76,7 +103,7 @@ class Cart {
                 this.items.push(data);
             }
 
-            // console.log(this.items)
+            console.log(this.items)
 
         }
         )
