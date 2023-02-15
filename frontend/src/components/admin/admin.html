@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/eabeecdfdf.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href='admin.css'>
+    <link rel="stylesheet" href=".../../../.../../../.../../../main.css">
     <title>admin</title>
 </head>
 
@@ -25,23 +26,23 @@
                 </div>
 
                 <div class="add-product-nav">
-                    <span><i class="fa-solid fa-square-plus stat-nav-icon"></i>Add Product</span>
+                    <span id="add-product"><i class="fa-solid fa-square-plus stat-nav-icon"></i>Add Product</span>
                 </div>
 
                 <div class="products-nav">
-                    <span><i class="fa-solid fa-bag-shopping stat-nav-icon"></i>Products</span>
+                    <span id="products"><i class="fa-solid fa-bag-shopping stat-nav-icon"></i>Products</span>
                 </div>
 
                 <div class="orders-nav">
-                    <span><i class="fa-solid fa-cart-shopping stat-nav-icon"></i>Orders</span>
+                    <span id="orders"><i class="fa-solid fa-cart-shopping stat-nav-icon"></i>Orders</span>
                 </div>
 
                 <div class="delivered-nav">
-                    <span><i class="fa-solid fa-cart-shopping stat-nav-icon"></i>Delivered</span>
+                    <span id="delivered"><i class="fa-solid fa-cart-shopping stat-nav-icon"></i>Delivered</span>
                 </div>
 
                 <div class="users-nav">
-                    <span><i class="fa-solid fa-user stat-nav-icon"></i>Users</span>
+                    <span id="users"><i class="fa-solid fa-user stat-nav-icon"></i>Users</span>
                 </div>
 
                 <div class="settings-nav">
@@ -207,7 +208,62 @@
                     </div>
                 </div>
 
-                <div class="stats-table-nav">
+                <div class="product-form-group">
+                    <h3>Add product</h3>
+                    <form>
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter Name">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="description">Description</label>
+                            <input type="text" name="description" id="description" placeholder="Enter Description">
+                        </div>
+                        <!-- price  -->
+                        <div class="input-group">
+                            <label for="price">Price</label>
+                            <input type="text" name="price" id="price" placeholder="Enter Price">
+                        </div>
+                        <!-- category  -->
+                        <div class="input-group">
+                            <select name="category" id="category">
+                                <!-- furniture category -->
+                                <option value="furniture">Furniture</option>
+                                <option value="bedroom">Bed</option>
+                                <option value="sofa">Sofa</option>
+                                <option value="dining">Dining</option>
+                            </select>
+                        </div>
+                        <!-- image url -->
+                        <div class="input-group">
+                            <label for="image">Image</label>
+                            <input type="text" name="image" id="image" placeholder="Enter Image URL">
+                        </div>
+                        <!-- recently added checkbox -->
+                        <div class="input-group">
+                            <input type="checkbox" name="recently-added" id="recently-added">
+                            <label for="recently-added">Recently Added</label>
+                        </div>
+                        <!-- featured checkbox -->
+                        <div class="input-group">
+                            <input type="checkbox" name="featured" id="featured">
+                            <label for="featured">Featured</label>
+                        </div>
+                        <!-- is deleted checkbox -->
+                        <div class="input-group">
+                            <input type="checkbox" name="is-deleted" id="is-deleted">
+                            <label for="is-deleted">Is Deleted</label>
+                        </div>
+                        <!-- submit button -->
+                        <div class="input-group">
+                            <button type="submit" id="submit-btn">Add Product</button>
+                        </div>
+                    </form>
+
+                </div>
+
+                <!-- <div class="stats-table-nav">
                     
 
                     <div class="">
@@ -220,7 +276,7 @@
 
                     <div class="role-user stats-table-width">
                         <button>Next</button>
-                    </div>
+                    </div> -->
 
                    
                 </div>
@@ -229,7 +285,7 @@
     </div>
 
 
-
+<script src="../../../dist/components/admin/admin.js" defer></script>
 </body>
 
 </html>

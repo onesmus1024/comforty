@@ -7,7 +7,7 @@ let numberOfItem = document.querySelector("#items-number")! as HTMLSpanElement;
 let cartItems = document.querySelector(".cart-items")
 let numberOfItems = document.getElementById("number-of-items")! as HTMLDivElement;
 let placeOrder =  document.querySelector("#place-order")! as HTMLButtonElement;
-console.log(placeOrder);
+
 // plusBtn.addEventListener("click", () => {
 //     numberOfItem.innerHTML = (parseInt(numberOfItem.innerHTML) + 1).toString();
 //     console.log("hello");
@@ -97,6 +97,10 @@ getCartItem().then(data=> {
     }
     )
 
+cart.getItemsFromDB().then(data => {
+    console.log("total",cart.getTotalPrice());
+})
+
 })
 
 
@@ -105,3 +109,4 @@ placeOrder.addEventListener("click", () => {
     window.location.href = "../checkout/checkout.html";
 
 })
+

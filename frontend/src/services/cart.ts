@@ -12,6 +12,7 @@ interface CartItem {
     price: number;
     name: string;
     image: string;
+    product_id: string;
 }
 
 class Cart {
@@ -75,6 +76,15 @@ class Cart {
 
     }
 
+    getProductById = async (product_id:string) => {
+        let res = await fetch('https://ridespark.ml/api/products/'+product_id).then(res => res.json()).then
+            (data => {
+                return data;
+            }
+            ).catch(err => console.log(err))
+        return res;
+    };
+
 
     async addItem(product_id: string) {
     await fetch('http://localhost:3002/api/cartitems',{
@@ -134,7 +144,15 @@ class Cart {
     getTotalPrice() {
         this.getItemsFromDB();
         return this.items.reduce((total, item) => {
-            return total + item.price * item.quantity;
+            this.getProductById(item.product_id).then(res => {
+                console.log(res);
+
+                total += 100* item.quantity;
+                
+            }
+            )
+            return total;
+            
         }, 0);
     }
 }
