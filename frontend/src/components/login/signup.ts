@@ -9,8 +9,6 @@ signupBtn.addEventListener("click", async (e) => {
     let password = document.getElementById("password1") as HTMLInputElement;
     let password2 = document.getElementById("password2") as HTMLInputElement;
     let phone = document.getElementById("phone") as HTMLInputElement;
-    console.log("test",email.value, password.value, password2.value, phone.value);
-
 
     if (email.value === "" || password.value === "" || password2.value === "" || phone.value === "") {
         let error = document.createElement("p");
