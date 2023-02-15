@@ -73,7 +73,7 @@ export const loginUser = async (req: ExtendedRequest, res: Response) => {
                     
                     const token = jwt.sign(user[0], process.env.JWT_SECRET as string, {expiresIn: '1d'});
             
-                    res.status(200).json({"token": token});
+                    res.status(200).json({"token": token,user : user[0]});
                 } else {
                     res.status(500).json({message: 'Invalid password'});
                 }
@@ -115,24 +115,27 @@ export const updateUser = async (req:Request, res: Response) => {
     try {
         const id = req.params.id;
         // get user from database
+        console.log("body",req.body);
 
    
         if (db.checkConnection() as unknown as boolean) {
             const userFound:UserModel[]= await db.exec('GetUserById',{id:id});
-            console.log(userFound);
             if (userFound.length > 0) {
                 const user = {
                     id: userFound[0].id,
-                    email: req.body.email || userFound[0].email,
-                    password: req.body.password || userFound[0].password,
-                    phone: req.body.phone || userFound[0].phone,
-                    isAdmin: req.body.isAdmin || userFound[0].is_admin,
-                    isDeleted: req.body.isDeleted || userFound[0].is_deleted,
-                    isSent: req.body.isSent || userFound[0].is_sent,
-                    createdAt: userFound[0].created_at
+                    email: req.body.email, 
+                    password: req.body.password,
+                    phone: req.body.phone ,
+                    is_admin: req.body.is_admin,
+                    is_deleted: req.body.is_deleted,
+                    is_sent: req.body.is_sent ,
+                    created_at: userFound[0].created_at
                 }
 
-                const userUpdated = await db.exec('InsertOrUpdateUser',{id: user.id, email: user.email, password: user.password, phone: user.phone, is_admin: user.isAdmin, is_deleted: user.isDeleted, is_sent: user.isSent, created_at: user.createdAt});
+                const salt = await bcrypt.genSalt(10);
+                user.password = await bcrypt.hash(user.password, salt);
+
+                const userUpdated = await db.exec('InsertOrUpdateUser',user);
                 if (userUpdated) {
                     res.status(200).json({message: 'User updated successfully', userUpdated});
                 }

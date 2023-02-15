@@ -16,20 +16,29 @@ CREATE PROCEDURE InsertOrUpdateProduct
 
 AS
 BEGIN
-    IF @id IS NULL
+    IF EXISTS (SELECT * FROM products WHERE id = @id)
     BEGIN
-        INSERT INTO products (id, name, description, price, created_at, category_id, product_image_url, recently_added, featured, is_deleted)
-        VALUES (@id, @name, @description, @price, @created_at, @category_id, @product_image_url, @recently_added, @featured, @is_deleted)
+        UPDATE products SET
+            name = @name,
+            description = @description,
+            price = @price,
+            created_at = @created_at,
+            category_id = @category_id,
+            product_image_url = @product_image_url,
+            recently_added = @recently_added,
+            featured = @featured,
+            is_deleted = @is_deleted
+        WHERE id = @id
+
+        SELECT * FROM products WHERE id = @id
     END
     ELSE
     BEGIN
-        UPDATE products SET name = @name, description = @description, price = @price, created_at = @created_at, category_id = @category_id, product_image_url = @product_image_url, recently_added = @recently_added, featured = @featured, is_deleted = @is_deleted WHERE id = @id
+        INSERT INTO products (id, name, description, price, created_at, category_id, product_image_url, recently_added, featured, is_deleted)
+        VALUES (@id, @name, @description, @price, @created_at, @category_id, @product_image_url, @recently_added, @featured, @is_deleted)
+        SELECT * FROM products WHERE id = @id
     END
 END
 
 
-INSERT INTO products (id, name, description, price, created_at, category_id, product_image_url, recently_added, featured, is_deleted)
-VALUES ('12857889-5b30-46e7-b76c-5547e6166499', 'Product 1', 'Product 1 Description', 100, '2020-01-01', '12857889-5b30-46e7-b76c-5547e6166499', 'https://www.google.com', 1, 1, 0)
-
-
-SELECT * FROM products
+DROP PROCEDURE IF EXISTS InsertOrUpdateProduct

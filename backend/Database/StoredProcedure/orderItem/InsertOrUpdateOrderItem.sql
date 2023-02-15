@@ -7,16 +7,19 @@ CREATE PROCEDURE InsertOrUpdateOrderItem
 @quantity INTEGER
 AS
 BEGIN
-    IF @id IS NULL
+    IF EXISTS (SELECT * FROM order_item WHERE id = @id)
     BEGIN
-        INSERT INTO order_items (id, order_id, product_id, quantity)
-        VALUES (@id, @order_id, @product_id, @quantity)
-        SELECT * FROM order_items WHERE id = @id
+        UPDATE order_item SET
+            order_id = @order_id,
+            product_id = @product_id,
+            quantity = @quantity
+        WHERE id = @id
     END
     ELSE
     BEGIN
-        UPDATE order_items SET order_id = @order_id, product_id = @product_id, quantity = @quantity WHERE id = @id
-        SELECT * FROM order_items WHERE id = @id
+        INSERT INTO order_item (id, order_id, product_id, quantity)
+        VALUES (@id, @order_id, @product_id, @quantity)
     END
+
 END
 

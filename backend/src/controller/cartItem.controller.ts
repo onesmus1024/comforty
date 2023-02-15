@@ -11,7 +11,7 @@ export const createCartItem: RequestHandler = async (req: Request, res: Response
             const cartItem: CartItemModel = {
                 id: uuidv4() as string,
                 product_id: req.body.product_id,
-                user_id: req.body.user_id,
+                user_id: req.body.user.id,
                 quantity: req.body.quantity
             }
     
@@ -46,7 +46,7 @@ export const updateCartItem: RequestHandler = async (req: Request, res: Response
         const cartItem: CartItemModel = {
             id: req.body.id,
             product_id: req.body.product_id,
-            user_id: req.body.user_id,
+            user_id: req.body.user.id,
             quantity: req.body.quantity
         }
     
@@ -103,7 +103,7 @@ export const removeOrReduceQuantity: RequestHandler = async (req: Request, res: 
 }
 export const getCartItemByUserId: RequestHandler = async (req: Request, res: Response) => {
     try {
-        const user_id: string = req.params.user_id;
+        const user_id: string = req.body.user.id;
     
         if (db.checkConnection() as unknown as boolean) {
             const cartItems: CartItemModel[] = await db.exec("GetCartItemByUserId", {user_id}) as unknown as CartItemModel[];

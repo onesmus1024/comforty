@@ -19,4 +19,9 @@ BEGIN
         INSERT INTO Cart_items (id, user_id, product_id, quantity) VALUES (@id, @user_id, @product_id, @quantity);
         SELECT * FROM Cart_items WHERE id = @id;
     END
-END
+    END
+
+
+
+
+DELETE products WHERE id = '72836104-8256-4264-aa67-0c024aaa62d3'
