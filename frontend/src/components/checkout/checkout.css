@@ -1,0 +1,12 @@
+
+.checkout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    border: 1px solid #ccc;
+    margin : 0 auto;
+}

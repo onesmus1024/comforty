@@ -46,6 +46,7 @@ class Cart {
         .then(data => {
 
             this.items = data;
+           
 
         })
 

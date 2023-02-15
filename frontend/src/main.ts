@@ -299,3 +299,27 @@ recentlyAddedContainer.addEventListener("click", (e) => {
     }
 }
 );
+
+
+const getCartItem = async () => {
+    let res = await fetch('http://localhost:3002/api/cartitems', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': 'Bearer ' + localStorage.getItem("token")
+        }
+
+    }).then(res => res.json()).then
+        (data => {
+            return data;
+        }
+        ).catch(err => console.log(err))
+    return res;
+};
+
+getCartItem().then(data => {
+
+    numberOfItems.style.display = "block";
+    numberOfItems.innerHTML = data.length.toString();
+
+})

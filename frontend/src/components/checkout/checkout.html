@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=".../../../.../../../.../../../main.css">
-    <link rel="stylesheet" href="cart.css">
-    <title>cart</title>
+    <link rel="stylesheet" href="checkout.css">
+    <title>checkout</title>
 </head>
+<link rel="stylesheet" href=".../../../.../../../.../../../main.css">
 
 <body>
     <header>
@@ -59,41 +59,32 @@
             <p>call us</p>
         </div>
     </nav>
-    <div class="cart-items">
-        <div class="cart-item">
-            <div class="item-image">
-                <img src="../../../asset/Product Image.png" alt="item" style="width: 100px; height: 100px;">
-            </div>
-            <div class="item-info">
-                <div class="wrapper">
-                    <h3>Armchair </h3>
-                    <p> $200.00</p>
-                </div>
-                <div class="actions">
 
-                    <span><ion-icon name="trash-outline" id="delete-btn"></ion-icon></span>
-    
-    
-                    <span> <ion-icon name="remove-outline" id="minus-btn"></ion-icon></span>
-                    <p id="items-number">1</p>
-                    <span>
-                        <ion-icon name="add-outline" id="add-btn"></ion-icon>
-                    </span>
-    
-    
-    
+    <div class="checkout">
+        <div class="checkout-header">
+            <h1>Checkout</h1>
+            <p>Home / Checkout</p>
+        </div>
+        <div class="checkout-body">
+            <div class="checkout-body-left">
+                <div class="checkout-body-left-header">
+                    <h2>Billing Details</h2>
+                    <select name="payment" id="">
+                        <option value="payment">M-pesa</option>
+                        <option value="payment">Airtell money</option>
+                        <option value="payment">card</option>
+                    </select>
                 </div>
             </div>
+            <div class="total">
+                <p>Total</p>
+                <p id="total">$5000</p>
+            </div>
+            <button>Pay now </button>
             
         </div>
-        <div class="total">
-            <p>Total</p>
-            <div>
-                <p id="total">$ 5000 </p>
-                <button id="place-order">place order </button>
-            </div>
-        </div>
     </div>
+
     <footer>
         <div class="footer-items">
             <div class="social">
@@ -136,10 +127,9 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2021 All Rights Reserved. </p> <img src="../../../asset/Group 13.png"
-                alt="payment">
+            <p>© 2021 All Rights Reserved. </p> <img src="../../../asset/Group 13.png" alt="payment">
     </footer>
-    <script type="module" src="../.././../dist/components/cart/cart.js" defer></script>
+    <script src="../../../dist/components/checkout/checkout.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
