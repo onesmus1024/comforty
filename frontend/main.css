@@ -330,11 +330,12 @@ button:hover{
     margin: 10px;
 }
 
+
 .top-categories .products .product .categories{
     background-color: #3b3b39;
     opacity: 0.8;
     position: relative;
-    top : -90px;
+    top : -10px;
     margin-bottom: 50px;
  
     width: 100%;
@@ -469,10 +470,12 @@ button:hover{
     width: 80%;
     margin: 0 auto;
     padding: 20px;
+
 }
 footer h3{
     text-transform: capitalize;
     color: #cac9cf;
+    margin-top: 20px;
 }
 footer ul{
     display: flex;
