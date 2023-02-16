@@ -23,16 +23,16 @@ const sendWelcomeEmail = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(db_config_1.default);
     const users = yield (yield pool.request().
         query("SELECT * FROM Users WHERE is_sent ='0'")).recordset;
-    console.log("users", users);
     for (let user of users) {
-        ejs_1.default.renderFile('../../../../templates/registration.ejs', { name: user.email }, (error, html) => __awaiter(void 0, void 0, void 0, function* () {
+        ejs_1.default.renderFile('/media/onesmus/d42c9065-8792-4148-a205-cc0a748da294/dev/The Jitu/assignment/comforty/backend/src/background/services/email/templates/registration.ejs', { name: user.email }, (error, html) => __awaiter(void 0, void 0, void 0, function* () {
+            console.log("html", html);
+            console.log("error", error);
             const message = {
                 from: process.env.EMAIL,
                 to: user.email,
-                subject: "Nodemailer Test",
+                subject: "Hello world?",
                 html
             };
-            // console.log(html);
             try {
                 yield (0, email_helper_1.default)(message);
                 yield pool.request().query(`UPDATE Users SET is_sent ='1' WHERE id ='${user.id}'`);

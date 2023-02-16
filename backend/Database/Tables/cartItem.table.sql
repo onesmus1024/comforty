@@ -18,4 +18,4 @@ DELETE FROM Cart_items;
 SELECT * FROM Users 
 
 
-UPDATE Users SET is_sent = '0' WHERE email ='onesmuswambugu135@gmail.com'
+UPDATE Users SET is_sent = '0' WHERE email ='kevinmalomba@gmail.com'

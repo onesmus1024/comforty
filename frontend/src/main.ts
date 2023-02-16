@@ -14,7 +14,7 @@ let featuredProductsContainer = document.querySelector("#featured-product")! as 
 let topCategoriesContainer = document.querySelector("#top-categories")! as HTMLDivElement;
 let ourProductsContainer = document.querySelector("#our-products")! as HTMLDivElement;
 let recentlyAddedContainer = document.querySelector("#recently-added")! as HTMLDivElement;
-
+let logout = document.getElementById("logout")! as HTMLButtonElement;
 
 cart.getItemsFromDB();
 interface CarouselItem {
@@ -133,6 +133,12 @@ const updateCartNumber =async () => {
     }
 }
 
+
+logout.addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "./src/components/login/login.html";
+}
+);
 
 
 

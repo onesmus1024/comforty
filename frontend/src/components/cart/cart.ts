@@ -32,9 +32,10 @@ if (cart.getItems().length === 0) {
 }
 else {
     numberOfItems.style.display = "block";
+    numberOfItem.innerHTML = cart.getItems().length.toString();
 }
 
-numberOfItem.innerHTML = cart.getItems().length.toString();
+
 
 const getProductById = async (product_id:string) => {
     let res = await fetch('https://ridespark.ml/api/products/'+product_id).then(res => res.json()).then
@@ -63,10 +64,14 @@ const getCartItem = async () => {
     return res;
 };
 
+const items:any = [];
+
+
 
 getCartItem().then(data=> {
     numberOfItems.style.display = "block";
     numberOfItems.innerHTML = data.length.toString();
+    items.push(data);
 
     data.forEach((item: { product_id: string,quantity:string })  => {
         getProductById(item.product_id).then(product => {
@@ -105,8 +110,65 @@ cart.getItemsFromDB().then(data => {
 
 
 
-placeOrder.addEventListener("click", () => {
-    window.location.href = "../checkout/checkout.html";
+placeOrder.addEventListener("click", async () => {
+    
+    items.forEach((cartItem: { id: string; }) => {
 
-})
+        deleteItem(cartItem.id);
+    })
+
+    let order = {
+        "user_id": "a8e82a17-ff44-4d86-8d89-467088c14c56",
+        "is_paid": "0",
+        "is_delivered": "0",
+        "amount": "1000",
+    }
+
+    await createOrder(order).then(data => {
+        console.log(data);
+        // window.location.href = "../checkout/checkout.html";
+    }).catch(err => console.log(err))
+
+    })
+
+
+
+
+
+// fuction to delete item from cart by id
+
+const deleteItem = async (id:string) => {
+    await fetch('http://localhost:4000/api/cartitems'+ id, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': 'Bearer ' + localStorage.getItem("token")
+        }
+    }
+    ).then(res => res.json()).then
+
+        (data => {
+            console.log(data);
+        }
+        ).catch(err => console.log(err))
+}
+
+
+const createOrder = async (order:any) => {
+
+    await fetch('http://localhost:4000/api/orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': 'Bearer ' + localStorage.getItem("token")
+        },
+        body: JSON.stringify(order)
+    }
+    ).then(res => res.json()).then
+
+        (data => {
+            console.log(data);
+        }
+        ).catch(err => console.log(err))
+}
 
