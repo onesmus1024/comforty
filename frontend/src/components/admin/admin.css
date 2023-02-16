@@ -20,7 +20,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	height: 100vh;
 	background-color: rgb(39, 35, 67);
 	color: white;
 	padding: 3em;
@@ -233,3 +232,62 @@ tbody{
 	display: flex;
 	flex-direction: column;
 }
+
+/* make table of equal width */
+
+table {
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+/* make table header fixed */
+
+thead, tbody tr {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+/* make table body scrollable */
+
+tbody {
+	
+	overflow-y: auto;
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+	
+}
+
+/* make table header cells same width as table body cells */
+
+thead th {
+	position: sticky;
+	top: 0;
+}
+
+/* make table body cells same width as table header cells */
+
+tbody th, tbody td {
+	width: 100%;
+}
+
+/* make table body cells same height as table header cells */
+
+tbody th, tbody td {
+	height: 100%;
+}
+
+/* make table header cells same height as table body cells */
+
+thead th, thead td {
+	height: 100%;
+}
+
+/* make table header cells same height as table body cells */
+
+thead th, thead td {
+	height: 100%;
+}
+

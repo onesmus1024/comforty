@@ -200,12 +200,12 @@ GET   https://ridespark.ml/api/orders/bbf7cc2d-e741-430f-acea-75dd40319ec5
 
 ### 8. Create an order
 
-POST   https://ridespark.ml/api/orders
+POST   http://localhost:4000/api/orders
 Content-Type: application/json
 
 
 {
-    "user_id": "8fe3f01c-5d55-41ca-93ef-a84dcf27c2f8",
+    "user_id": "a8e82a17-ff44-4d86-8d89-467088c14c56",
     "is_paid": "0",
     "is_delivered": "0",
     "amount": "100"

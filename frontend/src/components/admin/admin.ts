@@ -90,27 +90,34 @@ const getUsers = async () => {
 
 users.addEventListener("click", async () => {
     let users = await getUsers();
+    container.innerHTML = "";
     users.forEach((user: any) => {
-        let row = document.createElement("tr");
-        let id = document.createElement("td");
-        let name = document.createElement("td");
-        let email = document.createElement("td");
-        let is_admin = document.createElement("td");
-        let created_at = document.createElement("td");
-        let updated_at = document.createElement("td");
-        id.innerHTML = user.id;
-        name.innerHTML = user.name;
-        email.innerHTML = user.email;
-        is_admin.innerHTML = user.is_admin;
-        created_at.innerHTML = user.created_at;
-        updated_at.innerHTML = user.updated_at;
-        row.appendChild(id);
-        row.appendChild(name);
-        row.appendChild(email);
-        row.appendChild(is_admin);
-        row.appendChild(created_at);
-        row.appendChild(updated_at);
-        container.appendChild(row);
+        // create table header
+        let table = document.createElement("table");
+        let thead = document.createElement("thead");
+        let tr = document.createElement("tr");
+        let th1 = document.createElement("th");
+        let th2 = document.createElement("th");
+        th1.innerHTML = "Email";
+        th2.innerHTML = "Is Admin";
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
+        // create table body
+        let tbody = document.createElement("tbody");
+        let tr1 = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        td1.innerHTML = user.email;
+        td2.innerHTML = user.is_admin;
+        tr1.appendChild(td1);
+        tr1.appendChild(td2);
+        tbody.appendChild(tr1);
+        table.appendChild(tbody);
+        container.appendChild(table);
+
     });
 }
 );
@@ -120,26 +127,36 @@ orders.addEventListener("click", async () => {
     let orders = await getOrders();
     container.innerHTML = "";
     orders.forEach((order: any) => {
-        let row = document.createElement("tr");
-        let id = document.createElement("td");
-        let user_id = document.createElement("td");
-        let order_status = document.createElement("td");
-        let total_price = document.createElement("td");
-        let created_at = document.createElement("td");
-        let updated_at = document.createElement("td");
-        id.innerHTML = order.id;
-        user_id.innerHTML = order.user_id;
-        order_status.innerHTML = order.order_status;
-        total_price.innerHTML = order.total_price;
-        created_at.innerHTML = order.created_at;
-        updated_at.innerHTML = order.updated_at;
-        row.appendChild(id);
-        row.appendChild(user_id);
-        row.appendChild(order_status);
-        row.appendChild(total_price);
-        row.appendChild(created_at);
-        row.appendChild(updated_at);
-        container.insertAdjacentElement
+ 
+        // create table header
+        let table = document.createElement("table");
+        let thead = document.createElement("thead");
+        let tr = document.createElement("tr");
+        let th1 = document.createElement("th");
+        let th2 = document.createElement("th");
+        let th3 = document.createElement("th");
+        th1.innerHTML = "IS Paid";
+        th2.innerHTML = "Amount";
+        th3.innerHTML = "IS Delivered"
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
+        // create table body
+        let tbody = document.createElement("tbody");
+        let tr1 = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        td1.innerHTML = order.is_paid;
+        td2.innerHTML = order.amount;
+        tr1.appendChild(td1);
+        tr1.appendChild(td2);
+        tbody.appendChild(tr1);
+        table.appendChild(tbody);
+        container.appendChild(table);
+
+        
     });
 }
 );
@@ -148,40 +165,107 @@ orders.addEventListener("click", async () => {
 products.addEventListener("click", async () => {
     let products = await getProducts();
     products.forEach((product: any) => {
-        let row = document.createElement("tr");
-        let id = document.createElement("td");
-        let name = document.createElement("td");
-        let description = document.createElement("td");
-        let price = document.createElement("td");
+        // create table header
+        let table = document.createElement("table");
+        let thead = document.createElement("thead");
+        let tr = document.createElement("tr");
+        let th1 = document.createElement("th");
+
+        let th2 = document.createElement("th");
+        let th3 = document.createElement("th");
+        let th4 = document.createElement("th");
+        let th5 = document.createElement("th");
+        let th6 = document.createElement("th");
+        let th7 = document.createElement("th");
+        th1.innerHTML = "Name";
+        th2.innerHTML = "Description";
+        th3.innerHTML = "Price";
+        th4.innerHTML = "Recently Added";
+        th5.innerHTML = "Featured";
+        th6.innerHTML = "Is Deleted";
+        th7.innerHTML = "edit";
+        th7.id = product.id;
+        th7.className = "edit";
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        tr.appendChild(th3);
+        tr.appendChild(th4);
+        tr.appendChild(th5);
+        tr.appendChild(th6);
+        tr.appendChild(th7);
+        thead.appendChild(tr);
+        table.appendChild(thead);
         
-        let category_id = document.createElement("td");
-        let recently_added = document.createElement("td");
-        let featured = document.createElement("td");
-        let is_deleted = document.createElement("td");
-        let created_at = document.createElement("td");
-        let updated_at = document.createElement("td");
-        id.innerHTML = product.id;
-        name.innerHTML = product.name;
-        description.innerHTML = product.description;
-        price.innerHTML = product.price;
-        category_id.innerHTML = product.category_id;
-        recently_added.innerHTML = product.recently_added;
-        featured.innerHTML = product.featured;
-        is_deleted.innerHTML = product.is_deleted;
-        created_at.innerHTML = product.created_at;
-        updated_at.innerHTML = product.updated_at;
-        row.appendChild(id);
-        row.appendChild(name);
-        row.appendChild(description);
-        row.appendChild(price);
-        row.appendChild(category_id);
-        row.appendChild(recently_added);
-        row.appendChild(featured);
-        row.appendChild(is_deleted);
-        row.appendChild(created_at);
-        row.appendChild(updated_at);
-        container.insertAdjacentElement("beforeend", row);
+        // create table body
+        let tbody = document.createElement("tbody");
+        let tr1 = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
+        let td4 = document.createElement("td");
+        let td5 = document.createElement("td");
+        let td6 = document.createElement("td");
+        let td7 = document.createElement("td");
+        td1.innerHTML = product.name;
+        td2.innerHTML = product.description;
+        td3.innerHTML = product.price;
+        td4.innerHTML = product.recently_added;
+        td5.innerHTML = product.featured;
+        td6.innerHTML = product.is_deleted;
+        td7.innerHTML = '<ion-icon name="create-outline"></ion-icon>';
+        tr1.appendChild(td1);
+        tr1.appendChild(td2);
+        tr1.appendChild(td3);
+        tr1.appendChild(td4);
+        tr1.appendChild(td5);
+        tr1.appendChild(td6);
+        tr1.appendChild(td7);
+        tbody.appendChild(tr1);
+        table.appendChild(tbody);
+        container.appendChild(table);
+
+        
     });
 }
 );
+
+
+delivered.addEventListener("click", async () => {
+    // display orders that is_delivered is true
+    console.log("delivered");
+    let orders = await getOrders();
+    container.innerHTML = "";
+    orders.forEach((order: any) => {
+        if (!order.is_delivered) {
+            // create table header
+            let table = document.createElement("table");
+            let thead = document.createElement("thead");
+            let tr = document.createElement("tr");
+            let th1 = document.createElement("th");
+            let th2 = document.createElement("th");
+            th1.innerHTML = "IS Paid";
+            th2.innerHTML = "Amount";
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            thead.appendChild(tr);
+            table.appendChild(thead);
+
+            // create table body
+            let tbody = document.createElement("tbody");
+            let tr1 = document.createElement("tr");
+            let td1 = document.createElement("td");
+            let td2 = document.createElement("td");
+            td1.innerHTML = order.is_paid;
+            td2.innerHTML = order.amount;
+            tr1.appendChild(td1);
+            tr1.appendChild(td2);
+            tbody.appendChild(tr1);
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+    }
+    );
+}
+);
+
 

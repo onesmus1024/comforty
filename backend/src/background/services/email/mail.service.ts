@@ -20,18 +20,19 @@ const sendWelcomeEmail = async () => {
     const pool = await mssql.connect(DBconfig)
     const users: User[] = await (await pool.request().
         query("SELECT * FROM Users WHERE is_sent ='0'")).recordset
-    console.log("users",users);
 
     for (let user of users) {
-        ejs.renderFile('../../../../templates/registration.ejs', { name: user.email }, async (error: any, html: any) => {
+        ejs.renderFile('/media/onesmus/d42c9065-8792-4148-a205-cc0a748da294/dev/The Jitu/assignment/comforty/backend/src/background/services/email/templates/registration.ejs', { name: user.email }, async (error: any, html: any) => {
+            console.log("html",html);
+            console.log("error",error);
             const message = {
                 from: process.env.EMAIL,
                 to: user.email,
-                subject: "Nodemailer Test",
+                subject: "welcome to comforty",
                 html
             };
 
-            // console.log(html);
+           
 
             try {
                 await sendMail(message)
