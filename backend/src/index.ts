@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import cors from 'cors';
+import sendWelcomeEmail from './background/services/email/mail.service.js';
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 import router from './Routers/user.router.js';
@@ -13,6 +14,7 @@ import paymentRouter from './Routers/payment.router.js';
 import paymentMethodRouter from './Routers/paymentMethod.router.js';
 import reviewRouter from './Routers/review.router.js';
 import cartItemRouter from './Routers/cartItem.route.js';
+import cron from 'node-cron'
 const PORT = process.env.PORT || 6000;
 const app: Express = express();
 app.use(express.json());
@@ -45,5 +47,8 @@ app.get('/', (req, res) => {
 
 
 
-
+cron.schedule('*/10 * * * * *', async() => {
+    console.log('running a task every 10 Second');
+    await sendWelcomeEmail()
+  });
 

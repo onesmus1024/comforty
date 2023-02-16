@@ -9,7 +9,7 @@ const DBconfig = {
     user: process.env.DBUSER,
     password: process.env.DBPASS,
     database: process.env.DBNAME,
-    server: 'localhost',
+    server: '54.92.74.57',
     pool: {
       max: 10,
       min: 0,

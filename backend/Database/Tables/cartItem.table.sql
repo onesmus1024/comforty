@@ -11,3 +11,11 @@ CREATE TABLE Cart_items (
     FOREIGN KEY (product_id) REFERENCES Products(id),
 );
 
+
+
+DELETE FROM Cart_items;
+
+SELECT * FROM Users 
+
+
+UPDATE Users SET is_sent = '0' WHERE email ='onesmuswambugu135@gmail.com'

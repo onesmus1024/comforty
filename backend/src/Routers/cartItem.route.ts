@@ -1,13 +1,14 @@
 import { Router } from "express";
 import { createCartItem, updateCartItem,deleteCartItem,getCartItemByUserId,removeOrReduceQuantity } from "../controller/cartItem.controller";
+import { verifyToken } from "../middlewares/verify.middleware";
 
 const cartItemRouter = Router();
 
-cartItemRouter.post("", createCartItem);
-cartItemRouter.put("", updateCartItem);
-cartItemRouter.delete("/:id", deleteCartItem);
-cartItemRouter.get("/:user_id", getCartItemByUserId);
-cartItemRouter.put("/removeOrReduceQuantity/:id", removeOrReduceQuantity);
+cartItemRouter.post("",verifyToken,createCartItem);
+cartItemRouter.put("",verifyToken,updateCartItem);
+cartItemRouter.delete("/:id",verifyToken, deleteCartItem);
+cartItemRouter.get("",verifyToken, getCartItemByUserId);
+cartItemRouter.put("/removeOrReduceQuantity/:id",verifyToken, removeOrReduceQuantity);
 
 
 
