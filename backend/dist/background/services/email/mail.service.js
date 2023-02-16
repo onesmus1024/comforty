@@ -30,7 +30,7 @@ const sendWelcomeEmail = () => __awaiter(void 0, void 0, void 0, function* () {
             const message = {
                 from: process.env.EMAIL,
                 to: user.email,
-                subject: "Hello world?",
+                subject: "welcome to comforty",
                 html
             };
             try {
